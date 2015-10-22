@@ -4,6 +4,7 @@ var SongQueue = Songs.extend({
   initialize: function() {
     this.on('add', this.checkAdd, this);
     this.on('ended', this.removeFirst, this);
+    this.on('reset', this.checkReset, this);
     this.on('dequeue', function(song) {
       this.removeClicked(song);
     }, this);
@@ -11,6 +12,12 @@ var SongQueue = Songs.extend({
 
   checkAdd: function() {
     if (this.length === 1) {
+      this.playFirst();
+    }
+  },
+
+  checkReset: function() {
+    if (this.length >= 1) {
       this.playFirst();
     }
   },
