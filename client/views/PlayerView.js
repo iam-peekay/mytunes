@@ -13,8 +13,16 @@ var PlayerView = Backbone.View.extend({
     this.render();
   },
 
+  events: {
+    'ended' : 'handleEnded'
+  },
+
   render: function() {
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
+  },
+
+  handleEnded: function() {
+    this.model.ended();
   }
 
 });
