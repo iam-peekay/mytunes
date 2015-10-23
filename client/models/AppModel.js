@@ -30,9 +30,10 @@ var AppModel = Backbone.Model.extend({
       this.get('playlists').removeFromPlaylist(song, 'New Playlist');
     }, this);
 
-    this.get('playlists').on('playPlayList', function(playlist) {
+    this.get('playlists').on('playPlaylist', function(playlist) {
+      debugger;
       this.get('songQueue').reset(playlist.get('songs'));
-    });
+    }, this);
 
   }
 

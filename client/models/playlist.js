@@ -11,8 +11,10 @@ var Playlist = Backbone.Model.extend({
 
   addToPlaylist: function(song) {
     var songsArr = this.get('songs').slice();
-    songsArr.push(song);
-    this.set('songs', songsArr);
+    if (!_.contains(songsArr, song)) {
+      songsArr.push(song);
+      this.set('songs', songsArr);
+    }
   },
 
   playPlaylist: function() {
